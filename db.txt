@@ -1,0 +1,50 @@
+create database stockDb;
+
+use stockDb;
+
+create table SupplierTbl(
+SupCode int primary key auto_increment,
+SupName varchar(50),
+SupAddress varchar(150),
+SupEmail varchar(50),
+SupPhone varchar(50));
+
+create table CategoryTbl(CatCode int primary key auto_increment,
+CatName varchar(50));
+
+create table EmployeeTbl(
+EmpCode int primary key auto_increment,
+EmpName varchar(50),
+EmpPhone varchar(50),
+EmpPass varchar(50));
+
+create table ItemTbl(
+ItCode int primary key auto_increment,
+ItName varchar(100),
+Supplier int, 
+foreign key(Supplier) references SupplierTbl(SubCode),
+Quantity int,
+ItDate varchar(100),
+Level int, 
+category int,
+foreign key(category) references CategoryTbl(CatCode));
+
+create table IssueTbl(
+IssCode int primary key auto_increment,
+ItemCode int, 
+foreign key(ItemCode) references ItemTbl(ItCode),
+ItemName varchar(100),
+IssueBy int,
+foreign key(IssueBy) references EmployeeTbl(EmpCode),
+Quantity int,
+IssDate varchar(100));
+
+
+
+
+
+
+
+
+
+
